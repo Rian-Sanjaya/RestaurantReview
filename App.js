@@ -75,7 +75,7 @@ export default class App extends Component {
           value={this.state.search}
         />
 
-        {/* <FlatList 
+        <FlatList 
           data={
             restaurants.filter(place => {
               return !this.state.search || 
@@ -86,40 +86,8 @@ export default class App extends Component {
             <RestaurantRow place={item} index={index} />
           }
           keyExtractor={item => item.name}
-        /> */}
-
-        <ScrollView contentContainerStyle={{
-          paddingTop: 30
-        }}>
-          {
-            restaurants.filter(place => {
-              return !this.state.search || 
-                place.name.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1 
-            }).map( (place, index) => {
-              return (
-                <View key={place.name} style={[
-                  styles.row,
-                  { backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7' }
-                ]}>
-                  <View style={styles.edges}>
-                    <Text>{index+1}</Text>
-                  </View>
-
-                  <View style={styles.nameAddress}>
-                    <Text>{place.name}</Text>
-                    <Text style={styles.addressText}>
-                      {place.address}
-                    </Text>
-                  </View>
-
-                  <View style={styles.edges}>
-                    <Text>Info</Text>
-                  </View>
-                </View>
-              )
-            })
-          }
-        </ScrollView>
+          initialNumToRender={20}
+        />
 
       </View>      
     );
@@ -127,20 +95,6 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row'
-  },
-  edges: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 5
-  },
-  nameAddress: {
-    flexDirection: 'column',
-    flex: 8
-  },
-  addressText: { color: 'grey' },
   input: {
     padding: 10,
     paddingHorizontal: 20,
