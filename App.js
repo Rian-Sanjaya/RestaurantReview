@@ -75,7 +75,7 @@ export default class App extends Component {
           value={this.state.search}
         />
 
-        <FlatList 
+        {/* <FlatList 
           data={
             restaurants.filter(place => {
               return !this.state.search || 
@@ -86,7 +86,7 @@ export default class App extends Component {
             <RestaurantRow place={item} index={index} />
           }
           keyExtractor={item => item.name}
-        />
+        /> */}
 
         <ScrollView contentContainerStyle={{
           paddingTop: 30
