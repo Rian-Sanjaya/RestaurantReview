@@ -4,12 +4,8 @@ import {
   Text, 
   StyleSheet, 
   TextInput,
-  ScrollView,
   FlatList
-  // Platform 
 } from 'react-native';
-
-// import HeaderStyle from './HeaderStyle';
 
 // relative path
 // import Header from './src/components/Header'
@@ -52,17 +48,10 @@ export default class App extends Component {
 
   render() {
 
-    // const headerStyle = Platform.select({
-    //   ios: HeaderStyle.iOSHeader,
-    //   android: HeaderStyle.header
-    // })
-
     return (
       <View style={{
         flex: 1
       }}>
-        
-        {/* <Text style={headerStyle}>Restaurant Review</Text> */}
 
         <Header />
 
