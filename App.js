@@ -4,7 +4,8 @@ import {
   Text, 
   StyleSheet, 
   TextInput,
-  FlatList
+  FlatList, 
+  Image
 } from 'react-native';
 
 // relative path
@@ -13,6 +14,7 @@ import {
 // absolute path
 import Header from 'components/Header'
 import RestaurantRow from 'components/RestaurantRow'
+import Hulk from 'images/Avengers-Hulk.png'
 
 const restaurants = [
   {name: 'React Cafe', address: '123 Anywhere St'},
@@ -43,8 +45,15 @@ const restaurants = [
 
 export default class App extends Component {
   state = {
-    search: null
+    search: null,
+    restaurants: []
   }
+
+  // // get the data from remote server
+  // componentDidMount() {
+  //   axios.get('http://ipaddress/restaurants')
+  //   .then( result => this.setState({ restaurant: result.data }))
+  // }
 
   render() {
 
@@ -53,6 +62,12 @@ export default class App extends Component {
         flex: 1
       }}>
 
+        <View style={{
+          marginTop: 30,
+          alignItems: 'center'
+        }}>
+          <Image source={Hulk} />
+        </View>
         <Header />
 
         <TextInput 
@@ -64,6 +79,7 @@ export default class App extends Component {
           value={this.state.search}
         />
 
+        {/* // if we get the data from remote server, it will be: this.state.restaurant.filter */}
         <FlatList 
           data={
             restaurants.filter(place => {

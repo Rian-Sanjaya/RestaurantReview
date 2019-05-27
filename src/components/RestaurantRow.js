@@ -6,7 +6,8 @@ import {
     Button,
     TouchableOpacity,
     TouchableWithoutFeedback,
-    TouchableHighlight
+    TouchableHighlight,
+    Image
 } from 'react-native'
 
 export default class RestaurantRow extends Component {
@@ -56,7 +57,9 @@ export default class RestaurantRow extends Component {
               style={styles.button}
               underlayColor='#5398DC'
             >
-              <Text style={styles.buttonText}>Info</Text>
+              <Text style={styles.buttonText}>
+                Info
+              </Text>
             </TouchableHighlight>
 
           </View>
@@ -66,6 +69,16 @@ export default class RestaurantRow extends Component {
           this.state.showInfo && 
           <View style={styles.info}>
             <Text>Restaurant Info</Text>
+            {/* load image from remote server
+            <Image 
+              source={{ uri: `http://ipaddress/images/${place.image}` }}
+              style={{ 
+                // width: 100, 
+                flex: 1,
+                height: 100 
+              }} 
+              resizeMode="contain"
+            /> */}
           </View>
         }
 
