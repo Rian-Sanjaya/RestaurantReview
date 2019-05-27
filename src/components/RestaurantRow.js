@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
     Image
 } from 'react-native'
-// import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class RestaurantRow extends Component {
 
@@ -18,7 +18,8 @@ export default class RestaurantRow extends Component {
   }
 
   infoPressed = () => {
-    this.setState({ showInfo: !this.state.showInfo })
+    // this.setState({ showInfo: !this.state.showInfo })
+    this.props.navigation.navigate('Info')
   }
 
   render() {
@@ -33,15 +34,15 @@ export default class RestaurantRow extends Component {
       ]}>
 
         <View style={styles.row}>
-          <View style={styles.edges}>
+          {/* <View style={styles.edges}>
             <Text>{index+1}</Text>
-          </View>
-          {/* <View style={styles.stars}>
+          </View> */}
+          <View style={styles.stars}>
             <Icon name="star" color="#FFD64C" />
             <Icon name="star" color="#FFD64C" />
             <Icon name="star" color="#FFD64C" />
             <Icon name="star-half" color="#FFD64C" />
-          </View> */}
+          </View>
 
           <View style={styles.nameAddress}>
             <Text>{place.name}</Text>

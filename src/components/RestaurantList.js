@@ -57,7 +57,7 @@ export default class RestaurantList extends Component {
   // }
 
   render() {
-
+    
     return (
       <View style={{
         flex: 1
@@ -89,7 +89,11 @@ export default class RestaurantList extends Component {
             })
           }
           renderItem={ ({ item, index }) => 
-            <RestaurantRow place={item} index={index} />
+            <RestaurantRow 
+              place={item} 
+              index={index}
+              navigation={this.props.navigation} 
+            />
           }
           keyExtractor={item => item.name}
           initialNumToRender={20}
