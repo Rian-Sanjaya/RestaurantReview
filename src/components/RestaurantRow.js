@@ -9,6 +9,7 @@ import {
     TouchableHighlight,
     Image
 } from 'react-native'
+// import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class RestaurantRow extends Component {
 
@@ -35,6 +36,12 @@ export default class RestaurantRow extends Component {
           <View style={styles.edges}>
             <Text>{index+1}</Text>
           </View>
+          {/* <View style={styles.stars}>
+            <Icon name="star" color="#FFD64C" />
+            <Icon name="star" color="#FFD64C" />
+            <Icon name="star" color="#FFD64C" />
+            <Icon name="star-half" color="#FFD64C" />
+          </View> */}
 
           <View style={styles.nameAddress}>
             <Text>{place.name}</Text>
@@ -95,6 +102,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 5,
+    minWidth: 50
+  },
+  stars: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: "flex-start",
     padding: 5,
     minWidth: 50
   },
