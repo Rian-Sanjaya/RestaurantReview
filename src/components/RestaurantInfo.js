@@ -4,9 +4,11 @@ import {
   Text, 
   ScrollView,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native'
 // import Stars from 'components/Stars'
+import Hulk from 'images/Avengers-Hulk.png'
 
 export default class RestaurantInfo  extends Component {
   
@@ -23,6 +25,10 @@ export default class RestaurantInfo  extends Component {
     // }
   }
   
+  addReview = () => {
+    this.props.navigation.navigate('AddReview')
+  }
+
   render() {
     
     // const place = this.props.navigation.state.params && 
@@ -32,24 +38,31 @@ export default class RestaurantInfo  extends Component {
     const place = this.props.navigation.getParam('place')
 
     return (
-      <View>
-        <Text>Info</Text>
-      </View>
+      // <View>
+      //   <Text>Info</Text>
+      // </View>
 
-      // <ScrollView style={StyleSheet.root}>
-      //   <View style={styles.infoHeader}>
-      //     <Image 
-      //       source={place.image}
-      //       style={styles.image}
-      //       resizeMode='contain'
-      //     />
-      //     <View style={styles.info}>
-      //       <Text style={styles.name}>{place.name}</Text>
-      //       <Text style={styles.address}>{place.address}</Text>
-      //       <Stars rating={place.rating} />
-      //     </View>
-      //   </View>
-      // </ScrollView>
+      <ScrollView style={StyleSheet.root}>
+        <View style={styles.infoHeader}>
+          <Image 
+            // source={place.image}
+            source={Hulk}
+            style={styles.image}
+            resizeMode='contain'
+          />
+          <View style={styles.info}>
+            <Text style={styles.name}>{place.name}</Text>
+            <Text style={styles.address}>{place.address}</Text>
+            {/* <Stars rating={place.rating} /> */}
+            <TouchableOpacity 
+              style={styles.button}
+              onPress={this.addReview}
+            >
+              <Text style={styles.buttonText}>Add Review</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -76,5 +89,19 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 20
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#0066cc',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    backgroundColor: '#fff',
+    marginTop: 10
+  },
+  buttonText: {
+    color: '#0066cc',
+    fontSize: 12,
+    textAlign: 'center'
   }
 })
