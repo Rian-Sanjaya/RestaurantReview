@@ -5,9 +5,9 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  ActivityIndicator,
-  AsyncStorage
+  ActivityIndicator
 } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -35,17 +35,32 @@ export default class AddReview extends Component {
   submitReview = () => {
     this.setState({ submitting: true })
 
+    // prevent a null value being stored in AsyncStorage
     // if (this.state.name !== null && this.state.name !== undefined) {
     //   AsyncStorage.setItem('reviewer_name', this.state.name)
     // }
 
     AsyncStorage.removeItem('reviewer_name')
 
-    setTimeout( () => {
-      console.log('Submit review ok');
-      this.setState({ submitting: false });
-      this.props.navigation.goBack();
-    }, 2000)
+    fetch('http://172.20.10.2:3000/review', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name,
+        rating: this.state.rating,
+        comment: this.state.comment
+      })
+    })
+    .then(response => {
+      return response.json
+    })
+    .then(result => {
+      this.setState({ submitting: false }, () => {
+        this.props.navigation.goBack()
+      })
+    })
+    .catch(error => {
+      this.setState({ submitting: false })
+    })
   }
 
   render() {

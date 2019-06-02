@@ -10,6 +10,7 @@ import {
     Image
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Stars from 'components/Stars'
 
 export default class RestaurantRow extends Component {
 
@@ -42,10 +43,7 @@ export default class RestaurantRow extends Component {
             <Text>{index+1}</Text>
           </View> */}
           <View style={styles.stars}>
-            <Icon name="star" color="#FFD64C" />
-            <Icon name="star" color="#FFD64C" />
-            <Icon name="star" color="#FFD64C" />
-            <Icon name="star-half" color="#FFD64C" />
+            <Stars rating={place.rating} />
           </View>
 
           <View style={styles.nameAddress}>
@@ -83,7 +81,7 @@ export default class RestaurantRow extends Component {
             <Text>Restaurant Info</Text>
             {/* load image from remote server
             <Image 
-              source={{ uri: `http://ipaddress/images/${place.image}` }}
+              source={{ uri: `http://192.168.2.101:3000/images/${place.image}` }}
               style={{ 
                 // width: 100, 
                 flex: 1,

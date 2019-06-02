@@ -7,8 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
-// import Stars from 'components/Stars'
-import Hulk from 'images/Avengers-Hulk.png'
+import Stars from 'components/Stars'
 
 export default class RestaurantInfo  extends Component {
   
@@ -31,6 +30,7 @@ export default class RestaurantInfo  extends Component {
 
   render() {
     
+    // check first if the passed parameter is not null
     // const place = this.props.navigation.state.params && 
     //   this.props.navigation.state.params.place
 
@@ -45,15 +45,14 @@ export default class RestaurantInfo  extends Component {
       <ScrollView style={StyleSheet.root}>
         <View style={styles.infoHeader}>
           <Image 
-            // source={place.image}
-            source={Hulk}
+            source={{ uri: `http://172.20.10.2:3000/images/${place.image}`}}
             style={styles.image}
             resizeMode='contain'
           />
           <View style={styles.info}>
             <Text style={styles.name}>{place.name}</Text>
             <Text style={styles.address}>{place.address}</Text>
-            {/* <Stars rating={place.rating} /> */}
+            <Stars rating={place.rating} />
             <TouchableOpacity 
               style={styles.button}
               onPress={this.addReview}

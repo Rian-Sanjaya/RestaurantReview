@@ -11,6 +11,7 @@ import RestaurantList from 'components/RestaurantList'
 import RestaurantInfo from 'components/RestaurantInfo'
 import About from 'components/About'
 import AddReview from 'components/AddReview'
+import SplashScreen from 'react-native-splash-screen'
 
 const List = createStackNavigator(
   {
@@ -38,6 +39,7 @@ const Tabs = createBottomTabNavigator({
   defaultNavigationOptions: ({ navigation }) => {
     return {
       tabBarIcon: ({ tintColor }) => {
+        // extract the route name from the navigation object
         const route = navigation.state.routeName
         const name = {
           'List': 'list',
@@ -63,8 +65,16 @@ const Modals = createStackNavigator({
   }
 })
 
-// const App = createAppContainer(List)
-// const App = createAppContainer(Tabs)
-const App = createAppContainer(Modals)
+const AppContainer = createAppContainer(Modals)
 
-export default App
+// export default AppContainer
+
+export default class App extends Component {
+  componentDidMount() {
+    SplashScreen.hide()
+  }
+  
+  render() {
+    return <AppContainer />
+  }
+}
