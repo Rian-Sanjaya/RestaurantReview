@@ -16,7 +16,6 @@ import axios from 'axios'
 // absolute path
 import Header from 'components/Header'
 import RestaurantRow from 'components/RestaurantRow'
-import Hulk from 'images/Avengers-Hulk.png'
 import PizzaImage from 'images/pizza.png'
 
 // const restaurants = [
@@ -60,7 +59,7 @@ export default class RestaurantList extends Component {
 
   // // get the data from remote server
   componentDidMount() {
-    axios.get('http://172.20.10.2:3000/restaurants')
+    axios.get('http://172.17.0.1:3000/restaurants')
     .then( result => this.setState({ restaurants: result.data }))
   }
 

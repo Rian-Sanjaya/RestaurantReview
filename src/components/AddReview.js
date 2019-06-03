@@ -42,7 +42,7 @@ export default class AddReview extends Component {
 
     AsyncStorage.removeItem('reviewer_name')
 
-    fetch('http://172.20.10.2:3000/review', {
+    fetch('http://172.17.0.1:3000/review', {
       method: 'POST',
       body: JSON.stringify({
         name: this.state.name,

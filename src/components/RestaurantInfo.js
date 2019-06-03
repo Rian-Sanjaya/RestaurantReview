@@ -45,7 +45,7 @@ export default class RestaurantInfo  extends Component {
       <ScrollView style={StyleSheet.root}>
         <View style={styles.infoHeader}>
           <Image 
-            source={{ uri: `http://172.20.10.2:3000/images/${place.image}`}}
+            source={{ uri: `http://172.17.0.1:3000/images/${place.image}`}}
             style={styles.image}
             resizeMode='contain'
           />
